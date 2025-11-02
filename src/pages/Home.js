@@ -3,7 +3,7 @@ import Chatbot from "../components/Chatbot";
 import ReportCard from "../components/ReportCard";
 
 function Home() {
-  const username = "Kavya"; // later fetched from backend
+  const username = "Vooka Kavya Suma"; // later fetched from backend
 
   const reports = [
     { id: 1, title: "Blood Test", date: "2025-10-25" },
