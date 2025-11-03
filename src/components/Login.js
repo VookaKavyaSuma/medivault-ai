@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/MediVault.AI-logo.png"; 
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // ✅ useNavigate is used to redirect to another route
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +19,7 @@ function Login({ onLogin }) {
     } else {
       alert("Please fill all fields.");
     }
+    navigate("/home");
   };
 
   return (
