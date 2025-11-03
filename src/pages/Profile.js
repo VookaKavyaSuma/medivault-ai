@@ -1,31 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Profile.css";
+import { FaQrcode } from "react-icons/fa";
 
 function Profile() {
-  // Temporary static user details (later can be fetched from backend)
-  const [user, setUser] = useState({
+  const user = {
     name: "Kavya Suma",
-    phone: "+91 8500035012",
-    email: "vookakavyasuma4@gmail.com",
-    profilePic: "/profile_pic.png", // Put a sample image in public folder
-  });
+    email: "kavya.suma@example.com",
+    phone: "+91 9876543210",
+    address: "Hyderabad, India",
+  };
+
+  const handleGenerateQR = () => {
+    alert("QR Code generated for your MediVault profile!");
+  };
 
   return (
     <div className="profile-container">
       <div className="profile-card">
-        <img
-          src={user.profilePic}
-          alt="Profile"
-          className="profile-picture"
-        />
-        <h2 className="profile-name">{user.name}</h2>
-
-        <div className="profile-details">
-          <p><strong>📞 Phone:</strong> {user.phone}</p>
-          <p><strong>📧 Email:</strong> {user.email}</p>
+        <div className="profile-header">
+          <h2>My Profile</h2>
         </div>
 
-        <button className="qr-button">Generate QR Code</button>
+        <div className="profile-details">
+          <div className="profile-pic">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
+              alt="User"
+            />
+          </div>
+
+          <div className="info">
+            <h3>{user.name}</h3>
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Phone:</strong> {user.phone}</p>
+            <p><strong>Address:</strong> {user.address}</p>
+          </div>
+        </div>
+
+        <div className="qr-section">
+          <button className="qr-btn" onClick={handleGenerateQR}>
+            <FaQrcode className="qr-icon" /> Generate QR
+          </button>
+        </div>
       </div>
     </div>
   );
