@@ -19,7 +19,10 @@ function Login({ onLogin }) {
     } else {
       alert("Please fill all fields.");
     }
+
+    localStorage.setItem("isLoggedIn", "true");  // ✅ Save login status
     navigate("/home");
+
   };
 
   return (

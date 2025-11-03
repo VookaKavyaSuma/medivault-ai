@@ -38,12 +38,17 @@ function LayoutWithoutNavbar() {
 
 function AppContent() {
   const location = useLocation();
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   // Paths that should not display navbar
   const noNavbarPaths = ["/", "/login", "/signup"];
-
   const isNoNavbarPage = noNavbarPaths.includes(location.pathname);
 
+  if (!isLoggedIn && !isNoNavbarPage) {
+    window.location.href = "/login";
+    return null;
+  }
+  
   return isNoNavbarPage ? <LayoutWithoutNavbar /> : <LayoutWithNavbar />;
 }
 
