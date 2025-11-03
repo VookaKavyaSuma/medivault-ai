@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -13,14 +14,41 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import "./App.css";
 
+// ✅ Protected Route Wrapper
+function ProtectedRoute({ children }) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  return isLoggedIn ? children : <Navigate to="/login" />;
+}
+
 function LayoutWithNavbar() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/activity" element={<Activity />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/activity"
+          element={
+            <ProtectedRoute>
+              <Activity />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
@@ -38,17 +66,9 @@ function LayoutWithoutNavbar() {
 
 function AppContent() {
   const location = useLocation();
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
-  // Paths that should not display navbar
   const noNavbarPaths = ["/", "/login", "/signup"];
   const isNoNavbarPage = noNavbarPaths.includes(location.pathname);
 
-  if (!isLoggedIn && !isNoNavbarPage) {
-    window.location.href = "/login";
-    return null;
-  }
-  
   return isNoNavbarPage ? <LayoutWithoutNavbar /> : <LayoutWithNavbar />;
 }
 
