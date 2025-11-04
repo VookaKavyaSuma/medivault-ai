@@ -1,47 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { QRCodeCanvas } from "qrcode.react";
 import "./Profile.css";
-import { FaQrcode } from "react-icons/fa";
 
-function Profile() {
-  const user = {
+const Profile = () => {
+  const [showQR, setShowQR] = useState(true);
+
+  const profileData = {
     name: "Kavya Suma",
-    email: "vookakavyasuma4@gmail.com",
+    email: "vookakavya4@gmail.com",
     phone: "+91 9876543210",
     address: "Hyderabad, India",
   };
 
-  const handleGenerateQR = () => {
-    alert("QR Code generated for your MediVault profile!");
-  };
-
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <h2 className="profile-header">My Profile</h2>
+    <div className="profile-wrapper">
+      {/* Left Blue Section */}
+      <div className="profile-left-panel">
+        <div className="profile-content">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            className="profile-picture"
+          />
+          <h2 className="profile-name">{profileData.name}</h2>
+          <p>
+            <strong>Email:</strong> {profileData.email}
+          </p>
+          <p>
+            <strong>Phone:</strong> {profileData.phone}
+          </p>
+          <p>
+            <strong>Address:</strong> {profileData.address}
+          </p>
 
-        <div className="profile-details">
-          <div className="profile-pic">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
-              alt="User"
-              className="profile-picture"
-            />
-          </div>
-
-          <div className="info">
-            <h3 className="profile-name">{user.name}</h3>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Phone:</strong> {user.phone}</p>
-            <p><strong>Address:</strong> {user.address}</p>
-          </div>
+          <button
+            className="qr-button"
+            onClick={() => setShowQR(!showQR)}
+          >
+            {showQR ? "Hide QR" : "Show QR"}
+          </button>
         </div>
+      </div>
 
-        <button className="qr-button" onClick={handleGenerateQR}>
-          <FaQrcode className="qr-icon" /> Generate QR
-        </button>
+      {/* Right White Section */}
+      <div className="profile-right-panel">
+        {showQR ? (
+          <div className="qr-display">
+            <QRCodeCanvas
+              value={JSON.stringify(profileData)}
+              size={230}
+              fgColor="#000000"
+            />
+            <p className="qr-text">Scan to view profile details</p>
+          </div>
+        ) : (
+          <div className="qr-placeholder">QR Code Hidden</div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Profile;

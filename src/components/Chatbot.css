@@ -144,13 +144,34 @@
 }
 
 /* Animation */
-@keyframes fadeIn {
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Slide-down animation for smooth close */
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+/* Apply animations when opening or closing */
+.chatbot-box.opening {
+  animation: slideUp 0.4s ease forwards;
+}
+
+.chatbot-box.closing {
+  animation: slideDown 0.4s ease forwards;
 }

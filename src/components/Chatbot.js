@@ -4,6 +4,7 @@ import { FaComments, FaTimes } from "react-icons/fa";
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false)
   const [messages, setMessages] = useState([
     { text: "Hi! 👋 I’m your MediVault Assistant. How can I help you today?", sender: "bot" }
   ]);
@@ -25,6 +26,14 @@ function Chatbot() {
     }, 800);
   };
 
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setIsOpen(false);
+    }, 400); // match animation time in CSS
+  };
+  
   return (
     <div className="chatbot-wrapper">
       {!isOpen && (
@@ -33,11 +42,11 @@ function Chatbot() {
         </button>
       )}
 
-      {isOpen && (
-        <div className="chatbot-box">
+      {(isOpen || isClosing) && (
+         <div className={`chatbot-box ${isClosing ? "closing" : "opening"}`}>
           <div className="chatbot-header">
             <h4>MediVault Assistant</h4>
-            <FaTimes className="close-btn" onClick={() => setIsOpen(false)} />
+            <FaTimes className="close-btn" onClick={handleClose} />
           </div>
 
           <div className="chatbot-messages">
