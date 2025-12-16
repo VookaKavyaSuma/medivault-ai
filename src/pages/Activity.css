@@ -1,32 +1,35 @@
+/* ====== Activity Page Layout ====== */
 .activity-page {
-  margin-top: 800px; /*slightly increased to move further below navbar */
-  /* padding-top: calc(var(--navbar-height) + 20px); 20px extra for breathing space */
+  margin-top: 770px; /* push below navbar */
   background: linear-gradient(to bottom, #f0f6ff, #e6f0ff);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
+  padding: 20px 60px;
   position: relative;
-  z-index: 0;
-  width: 100vw; /* ensures full width of the viewport */
-  box-sizing: border-box; /* prevents overflow issues */
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Page Title */
+/* ====== Page Title ====== */
 .activity-title {
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
   color: #005cbf;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-/* Summary Section */
+/* ====== Summary Section ====== */
 .summary-section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 25px;
+  width: 100%;
 }
 
 .summary-card {
@@ -56,12 +59,14 @@
   font-weight: bold;
 }
 
-/* Chart Section */
+/* ====== Chart Section ====== */
 .chart-section {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  width: 100%;
+  max-width: 900px;
 }
 
 .chart-section h2 {
@@ -72,17 +77,18 @@
   font-weight: 600;
 }
 
-/* Reports Section */
+/* ====== Reports Section ====== */
 .reports-section {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 40px 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   position: relative;
+  width: 100%;
+  max-width: 900px;
   z-index: 1;
 }
-
 
 .reports-section h2 {
   color: #0078d7 !important;
@@ -90,12 +96,9 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  z-index: 2;
-  position: relative;
 }
 
-
-/* Table Styling */
+/* ====== Table Styling ====== */
 .reports-section table {
   width: 100%;
   border-collapse: collapse;
@@ -120,14 +123,63 @@
   transition: 0.3s;
 }
 
+/* ====== Responsive Design ====== */
+@media (max-width: 1024px) {
+  .activity-page {
+    margin-top: 120px;
+    padding: 20px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .activity-page {
-    margin-top: 100px; /* slightly more space on smaller screens */
+    margin-top: 100px;
+    padding: 20px 25px;
+  }
+
+  .summary-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .summary-card {
+    width: 80%;
+  }
+
+  .chart-section,
+  .reports-section {
+    max-width: 100%;
+    padding: 25px 20px;
   }
 }
 
 @media (max-width: 480px) {
   .activity-page {
-    margin-top: 120px; /* more for very small screens */
+    margin-top: 90px;
+    padding: 15px;
+  }
+
+  .summary-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .activity-title {
+    font-size: 22px;
+  }
+
+  .chart-section h2,
+  .reports-section h2 {
+    font-size: 18px;
+  }
+
+  .reports-section table {
+    font-size: 14px;
+  }
+
+  .reports-section th,
+  .reports-section td {
+    padding: 8px;
   }
 }
