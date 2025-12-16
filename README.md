@@ -30,8 +30,14 @@ It enables patients to store, manage, and share their medical history — includ
 ---
 
 ## 🚀 Getting Started
+### Fork the repository
 
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/yourusername/medivault-ai.git
 cd medivault-ai
+```
+
+
+
+
