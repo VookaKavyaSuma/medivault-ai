@@ -15,6 +15,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Logo */
 .logo-section {
   display: flex;
   align-items: center;
@@ -25,36 +26,59 @@
   margin-right: 12px;
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.navbar a:hover {
-  color: #cfe0ff;
-  text-decoration: underline;
-}
-
+/* Nav Links */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 18px;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
-.nav-links li {
+/* Base nav link */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* 🖱 Hover effect */
+.nav-link:hover {
+  background-color: #ffffff;
+  color: #004aad;
+}
+
+/* ✅ Active page */
+.nav-link.active {
+  background-color: #ffffff;
+  color: #002f7f;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 🚪 Logout Button */
+.logout-btn {
+  background-color: #ffffff;
+  color: #004aad;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.nav-links li:hover {
-  color: #b3c7ff;
+.logout-btn:hover {
+  background-color: #b3c7ff;
+  color: #002f7f;
+  transform: scale(1.05);
 }
 
+/* 📱 Responsive */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -70,46 +94,11 @@
   }
 
   .logo {
-    height: 40px;
-  }
-}
-
-/* 🚪 Logout Button Styling */
-.logout-btn {
-  background-color: #ffffff;
-  color: #004aad;
-  border: none;
-  border-radius: 25px;
-  padding: 8px 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-left: 15px;
-}
-
-.logout-btn:hover {
-  background-color: #b3c7ff;
-  color: #002f7f;
-  transform: scale(1.05);
-}
-
-/* 📱 Responsive Design */
-@media (max-width: 768px) {
-  .nav-links {
-    gap: 15px;
+    height: 35px;
   }
 
   .logout-btn {
-    padding: 6px 14px;
     font-size: 14px;
-    margin-left: 8px;
-  }
-
-  .navbar h2 {
-    font-size: 18px;
-  }
-
-  .logo {
-    height: 30px;
+    padding: 6px 14px;
   }
 }
