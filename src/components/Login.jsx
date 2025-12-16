@@ -17,14 +17,13 @@ function Login() {
     }
 
     // ✅ Save login state
-    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("authToken", "dummy-token");
+
 
     alert("Login successful!");
 
     // ✅ Small delay to ensure localStorage updates before navigation
-    setTimeout(() => {
-      navigate("/home");
-    }, 100);
+    navigate("/home");
   };
 
   return (

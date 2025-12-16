@@ -16,7 +16,7 @@ import "./App.css";
 
 // ✅ Protected Route Wrapper
 function ProtectedRoute({ children }) {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const isLoggedIn = !!localStorage.getItem("authToken");
   return isLoggedIn ? children : <Navigate to="/login" replace />;
 }
 
@@ -57,7 +57,8 @@ function LayoutWithNavbar() {
 
 // ✅ Layout for pages without Navbar (login/signup)
 function LayoutWithoutNavbar() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const isLoggedIn = !!localStorage.getItem("authToken");
+
   return (
     <Routes>
       <Route

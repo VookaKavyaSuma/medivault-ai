@@ -73,3 +73,43 @@
     height: 40px;
   }
 }
+
+/* 🚪 Logout Button Styling */
+.logout-btn {
+  background-color: #ffffff;
+  color: #004aad;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+}
+
+.logout-btn:hover {
+  background-color: #b3c7ff;
+  color: #002f7f;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  .logout-btn {
+    padding: 6px 14px;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  .navbar h2 {
+    font-size: 18px;
+  }
+
+  .logo {
+    height: 30px;
+  }
+}
